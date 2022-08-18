@@ -38,3 +38,11 @@ export const TypeNarrowing = ({ data, product }: Props) => {
   // type of data was narrowed down to object value
   return <div>Name: {data.name}</div>;
 };
+
+type Fish = {name: string; swim: () => void};
+
+type Bird = {name: string; fly: () => void};
+
+function isFish(pet: Fish | Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
