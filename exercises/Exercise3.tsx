@@ -1,9 +1,9 @@
-import { useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 
 const useDarkMode = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  return [isDarkMode, setIsDarkMode];
+  return [isDarkMode, setIsDarkMode] as const;
 };
 
 export const TypingReactAPI = () => {
@@ -11,15 +11,23 @@ export const TypingReactAPI = () => {
 
   const [isDarkMode, setIsDarkMode] = useDarkMode();
 
-  const divElementRef = useRef();
+  const divElementRef = useRef<HTMLDivElement>(null);
 
-  const anotherRef = useRef();
+  const intervalRef = useRef();
+
+  useEffect(() => {
+    const id = setInterval(() => {});
+    intervalRef.current = id;
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  });
 
   return (
-    <div ref={divElementRef}>
-      <button onClick={() => setIsDarkMode((prevState) => !prevState)}>
-        Toggle Dark Mode
-      </button>
-    </div>
+      <div ref={divElementRef}>
+        <button onClick={() => setIsDarkMode((prevState) => !prevState)}>
+          Toggle Dark Mode
+        </button>
+      </div>
   );
 };
