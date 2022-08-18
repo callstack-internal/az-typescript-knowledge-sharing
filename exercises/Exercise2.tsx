@@ -1,20 +1,17 @@
-type Props = {
-  cart: any;
-  user: any;
-};
+import React from "react";
 
-export const TypingEvents = (props: Props) => {
-  const onClick = (e) => {
+export const TypingEvents = () => {
+  const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     console.log(e);
   };
 
-  const onKeyDown = (e) => {
-    if (e.keycode === 13) {
+  const onKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.keyCode === 13) {
       console.log("do something");
     }
   };
 
-  let resizeObserver = undefined;
+  let resizeObserver: ResizeObserver | undefined = undefined;
 
   if (typeof ResizeObserver !== "undefined") {
     resizeObserver = new ResizeObserver(() => {});
@@ -24,13 +21,6 @@ export const TypingEvents = (props: Props) => {
 
   return (
     <div>
-      <div>
-        User: {props.user.name}, membership status:{" "}
-        {props.user.membershipStatus}
-      </div>
-      <div>
-        Cart: {props.cart.items.length}, Total Price: {props.cart.totalPrice}
-      </div>
       <button onClick={onClick} onKeyDown={onKeyDown}>
         Click!
       </button>

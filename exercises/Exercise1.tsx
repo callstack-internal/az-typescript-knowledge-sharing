@@ -1,17 +1,27 @@
-type Props = {
-  cart: any;
-  user: any;
+type Cart = {
+  items: Array<{ id: string; name: string; price: number }>;
+  totalPrice: number;
 };
 
-export const BrokenComponent = (props: Props) => {
+type User = {
+  firstName: string;
+  lastName: string;
+  membershipStatus: "normal" | "premium";
+};
+
+type Props = {
+  cart: Cart;
+  user: User;
+};
+
+export const BrokenComponent = ({ user, cart }: Props) => {
   return (
     <div>
       <div>
-        User: {props.user.name}, membership status:{" "}
-        {props.user.membershipStatus}
+        User: {user.firstName} , membership status: {user.membershipStatus}
       </div>
       <div>
-        Cart: {props.cart.item.length}, Total Price: {props.cart.totalprice}
+        Cart: {cart.items.length}, Total Price: {cart.totalPrice}
       </div>
     </div>
   );
@@ -29,7 +39,7 @@ const ParentComponent = () => {
     firstName: "Bob",
     lastName: "McDonald",
     membershipStatus: "premium",
-  };
+  } as const;
 
   return <BrokenComponent cart={cart} user={user} />;
 };
