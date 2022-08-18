@@ -1,21 +1,25 @@
 import { useRef, useState } from "react";
 
-const useEdek = () => {
-  const [x, setX] = useState("");
+const useDarkMode = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const returnValue = [x, setX];
-
-  return returnValue;
+  return [isDarkMode, setIsDarkMode];
 };
 
 export const TypingReactAPI = () => {
   const [name, setName] = useState();
 
-  const [x, setX] = useEdek();
-
-  setX("bob");
+  const [isDarkMode, setIsDarkMode] = useDarkMode();
 
   const divElementRef = useRef();
 
-  return <div ref={divElementRef}></div>;
+  const anotherRef = useRef();
+
+  return (
+    <div ref={divElementRef}>
+      <button onClick={() => setIsDarkMode((prevState) => !prevState)}>
+        Toggle Dark Mode
+      </button>
+    </div>
+  );
 };
