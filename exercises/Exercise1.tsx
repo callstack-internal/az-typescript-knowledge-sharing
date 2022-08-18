@@ -18,7 +18,8 @@ export const BrokenComponent = ({ user, cart }: Props) => {
   return (
     <div>
       <div>
-        User: {user.firstName} , membership status: {user.membershipStatus}
+        User: {user.firstName} {user.lastName}, membership status:{" "}
+        {user.membershipStatus}
       </div>
       <div>
         Cart: {cart.items.length}, Total Price: {cart.totalPrice}
