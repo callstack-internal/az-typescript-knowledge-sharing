@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from "react";
 const useDarkMode = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  return [isDarkMode, setIsDarkMode] as const;
+  return [isDarkMode, setIsDarkMode];
 };
 
 export const TypingReactAPI = () => {
@@ -11,7 +11,7 @@ export const TypingReactAPI = () => {
 
   const [isDarkMode, setIsDarkMode] = useDarkMode();
 
-  const divElementRef = useRef<HTMLDivElement>(null);
+  const divElementRef = useRef(null);
 
   const intervalRef = useRef();
 
