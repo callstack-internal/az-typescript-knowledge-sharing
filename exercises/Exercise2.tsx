@@ -14,8 +14,6 @@ export const TypingEvents = (props: Props) => {
     }
   };
 
-  const onChange = (e) => {};
-
   let resizeObserver = undefined;
 
   if (typeof ResizeObserver !== "undefined") {

@@ -1,10 +1,15 @@
 import { useRouter } from "next/router";
 
+type Oil = { name: string; price: number; capacity: number };
+
+type Battery = { name: string; price: number; weight: number };
+
 type Props = {
   data: { name: string; age: number } | undefined;
+  product: Oil | Battery;
 };
 
-export const TypeNarrowing = (props: Props) => {
+export const TypeNarrowing = ({ data, product }: Props) => {
   const router = useRouter();
   const routerQuery = router.query;
   const testQueryParam = routerQuery.test;
@@ -13,13 +18,23 @@ export const TypeNarrowing = (props: Props) => {
     console.log(testQueryParam);
   }
 
-  // data can be undefined
-  const name = props.data.name;
+  if ("capacity" in product) {
+    console.log(product);
+    console.log("I'm Oil!");
+  }
 
-  if (!props.data) {
+  if ("weight" in product) {
+    console.log(product);
+    console.log("I'm Battery!");
+  }
+
+  // data can be undefined
+  const name = data.name;
+
+  if (!data) {
     return <div>Placeholder</div>;
   }
 
   // type of data was narrowed down to object value
-  return <div>Name: {props.data.name}</div>;
+  return <div>Name: {data.name}</div>;
 };

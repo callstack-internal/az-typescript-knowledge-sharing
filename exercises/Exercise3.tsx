@@ -1,25 +1,21 @@
 import { useRef, useState } from "react";
 
-type Props = {
-  cart: any;
-  user: any;
+const useEdek = () => {
+  const [x, setX] = useState("");
+
+  const returnValue = [x, setX];
+
+  return returnValue;
 };
 
-export const TypingReactAPI = (props: Props) => {
-  const [x, setX] = useState("edek");
-  const ref = useRef();
+export const TypingReactAPI = () => {
+  const [name, setName] = useState();
 
-  return (
-    <div ref={ref}>
-      <div>
-        User: {props.user.name}, membership status:{" "}
-        {props.user.membershipStatus}
-      </div>
-      <div>
-        <div>Cart</div>
-        <div>Item count: {props.cart.items.length}</div>
-        <div>Total Price: {props.cart.totalPrice}</div>
-      </div>
-    </div>
-  );
+  const [x, setX] = useEdek();
+
+  setX("bob");
+
+  const divElementRef = useRef();
+
+  return <div ref={divElementRef}></div>;
 };

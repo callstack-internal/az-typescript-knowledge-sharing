@@ -18,7 +18,13 @@ export const BrokenComponent = (props: Props) => {
 };
 
 const ParentComponent = () => {
-  const cart = { items: [{ id: "", name: "", price: 5 }], totalPrice: 55 };
+  const cart = {
+    items: [
+      { id: "123", name: "Oil", price: 5 },
+      { id: "763", name: "Brake Pads", price: 50 },
+    ],
+    totalPrice: 55,
+  };
   const user = {
     firstName: "Bob",
     lastName: "McDonald",
