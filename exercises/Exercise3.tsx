@@ -7,7 +7,14 @@ const useDarkMode = () => {
 };
 
 export const TypingReactAPI = () => {
-  const [name, setName] = useState();
+  const [user, setUser] = useState<{name: string; membershipStatus: string}>();
+
+  useEffect(() => {
+    setUser({
+      name: "Bob",
+      membershipStatus: "premium",
+    });
+  }, []);
 
   const [isDarkMode, setIsDarkMode] = useDarkMode();
 
@@ -28,6 +35,7 @@ export const TypingReactAPI = () => {
         <button onClick={() => setIsDarkMode((prevState) => !prevState)}>
           Toggle Dark Mode
         </button>
+        <div>Theme: {isDarkMode ? "dark" : "light"}</div>
       </div>
   );
 };
