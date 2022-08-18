@@ -13,7 +13,7 @@ export const TypingReactAPI = () => {
 
   const divElementRef = useRef<HTMLDivElement>(null);
 
-  const intervalRef = useRef();
+  const intervalRef = useRef<NodeJS.Timer>();
 
   useEffect(() => {
     const id = setInterval(() => {});
