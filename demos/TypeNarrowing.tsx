@@ -39,10 +39,14 @@ export const TypeNarrowing = ({ data, product }: Props) => {
   return <div>Name: {data.name}</div>;
 };
 
-type Fish = {name: string; swim: () => void};
+type Fish = {name: string; swim: boolean};
 
-type Bird = {name: string; fly: () => void};
+type Bird = {name: string; fly: boolean};
 
-function isFish(pet: Fish | Bird): pet is Fish {
-  return (pet as Fish).swim !== undefined;
+function isFish(pet: unknown): pet is Fish {
+  if (typeof pet === "object") {
+    return (pet as Fish)?.swim === true;
+  }
+
+  return false;
 }
